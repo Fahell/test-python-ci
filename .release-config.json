@@ -1,0 +1,40 @@
+{
+  "name": "example",
+  "type": "python",
+  "version": {
+    "files": ["pyproject.toml", "src/example/__init__.py"],
+    "patterns": {
+      "pyproject.toml": "version = \"{version}\"",
+      "src/example/__init__.py": "__version__ = \"{version}\""
+    }
+  },
+  "build": {
+    "command": "/usr/bin/python3 -m build",
+    "artifacts": ["dist/*.tar.gz", "dist/*.whl"],
+    "minSizeKB": 1,
+    "maxSizeKB": 1000
+  },
+  "tests": {
+    "enabled": true,
+    "command": "/usr/bin/python3 -m pytest tests/ -v"
+  },
+  "lint": {
+    "enabled": true,
+    "command": "/usr/bin/python3 -m ruff check ."
+  },
+  "security": {
+    "audit": false,
+    "detectSecrets": true
+  },
+  "pr": {
+    "enabled": true,
+    "baseBranch": "main",
+    "requireCI": true,
+    "autoMerge": true,
+    "mergeStrategy": "squash"
+  },
+  "githubRelease": {
+    "enabled": true,
+    "generateChangelog": true
+  }
+}
