@@ -16,7 +16,7 @@
   },
   "tests": {
     "enabled": true,
-    "command": "/usr/bin/python3 -m pip install -e . && /usr/bin/python3 -m pytest tests/ -v"
+    "command": "PYTHONPATH=/home/rafael/projects/test-python-ci/src /usr/bin/python3 -m pytest tests/ -v"
   },
   "lint": {
     "enabled": true,
